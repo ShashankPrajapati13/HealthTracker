@@ -1,0 +1,50 @@
+<form [formGroup]="workoutForm" (ngSubmit)="onSubmit()" class="max-w-lg mx-auto mt-10 p-8 bg-white rounded-lg shadow-lg space-y-6">
+  <div>
+    <label for="name" class="block text-sm font-medium text-gray-700">User Name</label>
+    <input
+      type="text"
+      id="name"
+      formControlName="name"
+      placeholder="User Name"
+      class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-transparent sm:text-sm transition duration-150 ease-in-out placeholder-gray-500"
+    />
+    <div *ngIf="workoutForm.get('name')?.invalid && (workoutForm.get('name')?.dirty || workoutForm.get('name')?.touched)" class="text-red-600 text-sm mt-1">
+      User Name is required.
+    </div>
+  </div>
+
+  <div>
+    <label for="type" class="block text-sm font-medium text-gray-700">Workout Type</label>
+    <select
+      id="type"
+      formControlName="type"
+      class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-transparent sm:text-sm transition duration-150 ease-in-out placeholder-gray-500"
+      [ngClass]="{ 'placeholder-selected': !workoutForm.get('type')?.value }"
+    >
+      <option value="" disabled [selected]="true">Select Workout Type</option>
+      <option *ngFor="let type of workoutTypes" [value]="type">{{ type }}</option>
+    </select>
+    <div *ngIf="workoutForm.get('type')?.invalid && (workoutForm.get('type')?.dirty || workoutForm.get('type')?.touched)" class="text-red-600 text-sm mt-1">
+      Workout Type is required.
+    </div>
+  </div>
+
+  <div>
+    <label for="minutes" class="block text-sm font-medium text-gray-700">Minutes</label>
+    <input
+      type="number"
+      id="minutes"
+      formControlName="minutes"
+      placeholder="Minutes"
+      class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-transparent sm:text-sm transition duration-150 ease-in-out placeholder-gray-500"
+    />
+    <div *ngIf="workoutForm.get('minutes')?.invalid && (workoutForm.get('minutes')?.dirty || workoutForm.get('minutes')?.touched)" class="text-red-600 text-sm mt-1">
+      <div *ngIf="workoutForm.get('minutes')?.errors?.['required']">Minutes are required.</div>
+      <div *ngIf="workoutForm.get('minutes')?.errors?.['min']">Minutes must be at least 1.</div>
+    </div>
+  </div>
+
+  <button type="submit" class="w-full py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-150 ease-in-out">
+    {{ isEdit ? 'Update Workout' : 'Add Workout' }}
+  </button>
+</form>

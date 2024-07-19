@@ -1,0 +1,17 @@
+<ul *ngIf="totalItems > 0" class="pagination flex justify-center items-center space-x-2 mt-4">
+  <li class="page-item" *ngIf="directionLinks">
+    <button (click)="changePage(1)" [disabled]="page === 1" class="px-3 py-1 rounded-md bg-gray-300 hover:bg-gray-400 disabled:opacity-50">First</button>
+  </li>
+  <li class="page-item" *ngIf="directionLinks">
+    <button (click)="changePage(page - 1)" [disabled]="page === 1" class="px-3 py-1 rounded-md bg-gray-300 hover:bg-gray-400 disabled:opacity-50">Previous</button>
+  </li>
+  <li class="page-item" *ngFor="let p of pages">
+    <button (click)="changePage(p)" [class.bg-indigo-500]="p === page" [class.text-white]="p === page" [class.bg-gray-300]="p !== page" [class.hover:bg-gray-400]="p !== page" class="px-3 py-1 rounded-md transition duration-300">{{ p }}</button>
+  </li>
+  <li class="page-item" *ngIf="directionLinks">
+    <button (click)="changePage(page + 1)" [disabled]="page === totalPages" class="px-3 py-1 rounded-md bg-gray-300 hover:bg-gray-400 disabled:opacity-50">Next</button>
+  </li>
+  <li class="page-item" *ngIf="directionLinks">
+    <button (click)="changePage(totalPages)" [disabled]="page === totalPages" class="px-3 py-1 rounded-md bg-gray-300 hover:bg-gray-400 disabled:opacity-50">Last</button>
+  </li>
+</ul>

@@ -1,0 +1,46 @@
+.pagination {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.page-item button {
+  padding: 0.5rem 1rem;
+  text-align: center;
+  background-color: #f3f4f6;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.page-item button:hover:not([disabled]) {
+  background-color: #e5e7eb;
+  color:  #6366f1;
+}
+
+.page-item button[disabled] {
+  background-color: #e5e7eb;
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.page-item button.bg-indigo-500 {
+  background-color: #6366f1;
+  color: white;
+}
+
+.page-item button.bg-gray-300 {
+  background-color: #d1d5db;
+}
+
+.page-item button.hover\:bg-gray-400:hover {
+  background-color: #9ca3af;
+  color: black;
+}
+
+.transition {
+  transition: all 0.3s ease;
+}

@@ -1,0 +1,29 @@
+<div class="flex h-screen">
+    <!-- Sidebar -->
+    <div class="w-1/4 bg-gray-100 p-4 overflow-y-auto">
+      <h2 class="text-xl font-bold mb-4">Users</h2>
+      <ul>
+        <li *ngFor="let user of uniqueUsers" (click)="selectUser(user)" class="cursor-pointer mb-2 p-2 bg-white hover:bg-gray-200 rounded">
+          {{ user.name }}
+        </li>
+      </ul>
+    </div>
+  
+    <!-- Main Chart Area -->
+    <div class="w-3/4 p-4">
+      <div class="text-center mb-4">
+        <h2 class="text-2xl font-bold">Workout Progress</h2>
+      </div>
+      <div id="chart">
+        <apx-chart
+          [series]="chartOptions.series"
+          [chart]="chartOptions.chart"
+          [title]="chartOptions.title"
+          [xaxis]="chartOptions.xaxis"
+          [yaxis]="chartOptions.yaxis"
+          [plotOptions]="chartOptions.plotOptions">
+        </apx-chart>
+      </div>
+    </div>
+  </div>
+  
